@@ -18,13 +18,13 @@ const Contact = ({ getComponent, specSelectors }) => {
       {url && (
         <div>
           <Link href={sanitizeUrl(url)} target="_blank">
-            {name} - Website
+            {name} - Sitio web
           </Link>
         </div>
       )}
       {email && (
         <Link href={sanitizeUrl(`mailto:${email}`)}>
-          {url ? `Send email to ${name}` : `Contact ${name}`}
+          {url ? `Enviar email a ${name}` : `Contactar ${name}`}
         </Link>
       )}
     </div>

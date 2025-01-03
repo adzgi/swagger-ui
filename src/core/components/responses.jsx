@@ -45,11 +45,11 @@ export default class Responses extends React.Component {
   //   return render
   // }
 
-	onChangeProducesWrapper = ( val ) => this.props.specActions.changeProducesValue([this.props.path, this.props.method], val)
+  onChangeProducesWrapper = (val) => this.props.specActions.changeProducesValue([this.props.path, this.props.method], val)
 
   onResponseContentTypeChange = ({ controlsAcceptHeader, value }) => {
     const { oas3Actions, path, method } = this.props
-    if(controlsAcceptHeader) {
+    if (controlsAcceptHeader) {
       oas3Actions.setResponseContentType({
         value,
         path,
@@ -74,11 +74,11 @@ export default class Responses extends React.Component {
       oas3Selectors,
       oas3Actions,
     } = this.props
-    let defaultCode = defaultStatusCode( responses )
+    let defaultCode = defaultStatusCode(responses)
 
-    const ContentType = getComponent( "contentType" )
-    const LiveResponse = getComponent( "liveResponse" )
-    const Response = getComponent( "response" )
+    const ContentType = getComponent("contentType")
+    const LiveResponse = getComponent("liveResponse")
+    const Response = getComponent("response")
 
     let produces = this.props.produces && this.props.produces.size ? this.props.produces : Responses.defaultProps.produces
 
@@ -93,71 +93,71 @@ export default class Responses extends React.Component {
     return (
       <div className="responses-wrapper">
         <div className="opblock-section-header">
-          <h4>Responses</h4>
-            { specSelectors.isOAS3() ? null : <label htmlFor={controlId}>
-              <span>Response content type</span>
-              <ContentType value={producesValue}
-                         ariaControls={regionId}
-                         ariaLabel="Response content type"
-                         className="execute-content-type"
-                         contentTypes={produces}
-                         controlId={controlId}
-                         onChange={this.onChangeProducesWrapper} />
-                     </label> }
+          <h4>Respuestas</h4>
+          {specSelectors.isOAS3() ? null : <label htmlFor={controlId}>
+            <span>Response content type</span>
+            <ContentType value={producesValue}
+              ariaControls={regionId}
+              ariaLabel="Response content type"
+              className="execute-content-type"
+              contentTypes={produces}
+              controlId={controlId}
+              onChange={this.onChangeProducesWrapper} />
+          </label>}
         </div>
         <div className="responses-inner">
           {
             !tryItOutResponse ? null
-                              : <div>
-                                  <LiveResponse response={ tryItOutResponse }
-                                                getComponent={ getComponent }
-                                                getConfigs={ getConfigs }
-                                                specSelectors={ specSelectors }
-                                                path={ this.props.path }
-                                                method={ this.props.method }
-                                                displayRequestDuration={ displayRequestDuration } />
-                                  <h4>Responses</h4>
-                                </div>
+              : <div>
+                <LiveResponse response={tryItOutResponse}
+                  getComponent={getComponent}
+                  getConfigs={getConfigs}
+                  specSelectors={specSelectors}
+                  path={this.props.path}
+                  method={this.props.method}
+                  displayRequestDuration={displayRequestDuration} />
+                <h4>Responses</h4>
+              </div>
 
           }
 
           <table aria-live="polite" className="responses-table" id={regionId} role="region">
             <thead>
               <tr className="responses-header">
-                <td className="col_header response-col_status">Code</td>
-                <td className="col_header response-col_description">Description</td>
-                { specSelectors.isOAS3() ? <td className="col col_header response-col_links">Links</td> : null }
+                <td className="col_header response-col_status">Código</td>
+                <td className="col_header response-col_description">Descripción</td>
+                {specSelectors.isOAS3() ? <td className="col col_header response-col_links">Links</td> : null}
               </tr>
             </thead>
             <tbody>
               {
-                responses.entrySeq().map( ([code, response]) => {
+                responses.entrySeq().map(([code, response]) => {
 
                   let className = tryItOutResponse && tryItOutResponse.get("status") == code ? "response_current" : ""
                   return (
-                    <Response key={ code }
-                              path={path}
-                              method={method}
-                              specPath={specPath.push(code)}
-                              isDefault={defaultCode === code}
-                              fn={fn}
-                              className={ className }
-                              code={ code }
-                              response={ response }
-                              specSelectors={ specSelectors }
-                              controlsAcceptHeader={response === acceptControllingResponse}
-                              onContentTypeChange={this.onResponseContentTypeChange}
-                              contentType={ producesValue }
-                              getConfigs={ getConfigs }
-                              activeExamplesKey={oas3Selectors.activeExamplesMember(
-                                path,
-                                method,
-                                "responses",
-                                code
-                              )}
-                              oas3Actions={oas3Actions}
-                              getComponent={ getComponent }/>
-                    )
+                    <Response key={code}
+                      path={path}
+                      method={method}
+                      specPath={specPath.push(code)}
+                      isDefault={defaultCode === code}
+                      fn={fn}
+                      className={className}
+                      code={code}
+                      response={response}
+                      specSelectors={specSelectors}
+                      controlsAcceptHeader={response === acceptControllingResponse}
+                      onContentTypeChange={this.onResponseContentTypeChange}
+                      contentType={producesValue}
+                      getConfigs={getConfigs}
+                      activeExamplesKey={oas3Selectors.activeExamplesMember(
+                        path,
+                        method,
+                        "responses",
+                        code
+                      )}
+                      oas3Actions={oas3Actions}
+                      getComponent={getComponent} />
+                  )
                 }).toArray()
               }
             </tbody>

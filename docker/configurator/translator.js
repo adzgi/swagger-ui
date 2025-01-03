@@ -38,7 +38,7 @@ const defaultBaseConfig = {
     }
   },
   layout: {
-    value: "StandaloneLayout",
+    value: "BaseLayout",
     schema: {
       type: "string",
       base: true
@@ -66,15 +66,15 @@ function objectToKeyValueString(env, { injectBaseConfig = false, schema = config
     const varSchema = schema[key]
     const value = env[key]
 
-    if(!varSchema) return
+    if (!varSchema) return
 
-    if(varSchema.onFound) {
+    if (varSchema.onFound) {
       varSchema.onFound()
     }
 
     const storageContents = valueStorage[varSchema.name]
 
-    if(storageContents) {
+    if (storageContents) {
       if (varSchema.legacy === true && !storageContents.schema.base) {
         // If we're looking at a legacy var, it should lose out to any already-set value
         // except for base values

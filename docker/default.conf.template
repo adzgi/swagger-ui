@@ -21,6 +21,9 @@
     index             index.html index.htm;
 
     location $BASE_URL {
+      add_header Cache-Control "no-cache, no-store, must-revalidate";
+      add_header Pragma "no-cache";
+      add_header Expires 0;
       absolute_redirect off;
       alias            /usr/share/nginx/html/;
       expires 1d;

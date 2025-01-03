@@ -69,7 +69,7 @@ export default class OperationServers extends React.Component {
       getComponent
     } = this.props
 
-    if(!operationServers && !pathServers) {
+    if (!operationServers && !pathServers) {
       return null
     }
 
@@ -81,7 +81,7 @@ export default class OperationServers extends React.Component {
     return <div className="opblock-section operation-servers">
       <div className="opblock-section-header">
         <div className="tab-header">
-          <h4 className="opblock-title">Servers</h4>
+          <h4 className="opblock-title">Servidores</h4>
         </div>
       </div>
       <div className="opblock-description-wrapper">
@@ -95,7 +95,7 @@ export default class OperationServers extends React.Component {
           setServerVariableValue={this.setServerVariableValue}
           getServerVariable={this.getServerVariable}
           getEffectiveServerValue={this.getEffectiveServerValue}
-          />
+        />
       </div>
     </div>
   }

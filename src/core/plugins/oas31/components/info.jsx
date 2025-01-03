@@ -42,7 +42,7 @@ const Info = ({ getComponent, specSelectors }) => {
         </h2>
 
         {(host || basePath) && <InfoBasePath host={host} basePath={basePath} />}
-        {url && <InfoUrl getComponent={getComponent} url={url} />}
+        {/*{url && <InfoUrl getComponent={getComponent} url={url} />}*/}
       </hgroup>
 
       {summary && <p className="info__summary">{summary}</p>}

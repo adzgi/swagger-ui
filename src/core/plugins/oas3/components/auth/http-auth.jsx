@@ -23,19 +23,19 @@ export default class HttpAuth extends React.Component {
     }
   }
 
-  getValue () {
+  getValue() {
     let { name, authorized } = this.props
 
     return authorized && authorized.getIn([name, "value"])
   }
 
-  onChange =(e) => {
+  onChange = (e) => {
     let { onChange } = this.props
     let { value, name } = e.target
 
     let newValue = Object.assign({}, this.state.value)
 
-    if(name) {
+    if (name) {
       newValue[name] = value
     } else {
       newValue = value
@@ -56,100 +56,100 @@ export default class HttpAuth extends React.Component {
 
     const scheme = (schema.get("scheme") || "").toLowerCase()
     let value = this.getValue()
-    let errors = errSelectors.allErrors().filter( err => err.get("authId") === name)
+    let errors = errSelectors.allErrors().filter(err => err.get("authId") === name)
 
-    if(scheme === "basic") {
+    if (scheme === "basic") {
       let username = value ? value.get("username") : null
       return <div>
         <h4>
-          <code>{ name || schema.get("name") }</code>&nbsp;
-            (http, Basic)
-            <JumpToPath path={[ "securityDefinitions", name ]} />
-          </h4>
-        { username && <h6>Authorized</h6> }
+          <code>{name || schema.get("name")}</code>&nbsp;
+          (http, Basic)
+          <JumpToPath path={["securityDefinitions", name]} />
+        </h4>
+        {username && <h6>Authorized</h6>}
         <Row>
-          <Markdown source={ schema.get("description") } />
+          <Markdown source={schema.get("description")} />
         </Row>
         <Row>
           <label htmlFor="auth-basic-username">Username:</label>
           {
-            username ? <code> { username } </code>
+            username ? <code> {username} </code>
               : <Col>
-                  <Input 
-                    id="auth-basic-username"
-                    type="text"
-                    required="required"
-                    name="username"
-                    aria-label="auth-basic-username"
-                    onChange={ this.onChange }
-                    autoFocus
-                  />
-                </Col>
+                <Input
+                  id="auth-basic-username"
+                  type="text"
+                  required="required"
+                  name="username"
+                  aria-label="auth-basic-username"
+                  onChange={this.onChange}
+                  autoFocus
+                />
+              </Col>
           }
         </Row>
         <Row>
           <label htmlFor="auth-basic-password">Password:</label>
-            {
-              username ? <code> ****** </code>
-                       : <Col>
-                            <Input 
-                              id="auth-basic-password"
-                              autoComplete="new-password"
-                              name="password"
-                              type="password"
-                              aria-label="auth-basic-password"
-                              onChange={ this.onChange }
-                            />
-                          </Col>
+          {
+            username ? <code> ****** </code>
+              : <Col>
+                <Input
+                  id="auth-basic-password"
+                  autoComplete="new-password"
+                  name="password"
+                  type="password"
+                  aria-label="auth-basic-password"
+                  onChange={this.onChange}
+                />
+              </Col>
           }
         </Row>
         {
-          errors.valueSeq().map( (error, key) => {
-            return <AuthError error={ error }
-                              key={ key }/>
-          } )
+          errors.valueSeq().map((error, key) => {
+            return <AuthError error={error}
+              key={key} />
+          })
         }
       </div>
     }
 
-    if(scheme === "bearer") {
+    if (scheme === "bearer") {
       return (
         <div>
           <h4>
-            <code>{ name || schema.get("name") }</code>&nbsp;
-              (http, Bearer)
-              <JumpToPath path={[ "securityDefinitions", name ]} />
-            </h4>
-            { value && <h6>Authorized</h6>}
-            <Row>
-              <Markdown source={ schema.get("description") } />
-            </Row>
-            <Row>
-              <label htmlFor="auth-bearer-value">Value:</label>
-              {
-                value ? <code> ****** </code>
-              : <Col>
+            <code>{name || schema.get("name")}</code>&nbsp;
+            (http, Bearer)
+            <JumpToPath path={["securityDefinitions", name]} />
+          </h4>
+          {value && <h6>Authorized</h6>}
+          <Row>
+            <Markdown source={schema.get("description")} />
+          </Row>
+          <Row>
+            <label htmlFor="auth-bearer-value">Valor:</label>
+            {
+              value ? <code> ****** </code>
+                : <Col>
                   <Input
                     id="auth-bearer-value"
                     type="text"
                     aria-label="auth-bearer-value"
-                    onChange={ this.onChange }
+                    onChange={this.onChange}
                     autoFocus
                   />
                 </Col>
+            }
+          </Row>
+          {
+            errors.valueSeq().map((error, key) => {
+              return <AuthError error={error}
+                key={key} />
+            })
           }
-        </Row>
-        {
-          errors.valueSeq().map( (error, key) => {
-            return <AuthError error={ error }
-              key={ key }/>
-          } )
-        }
-      </div>
-    )
+        </div>
+      )
     }
-  return <div>
-    <em><b>{name}</b> HTTP authentication: unsupported scheme {`'${scheme}'`}</em>
-  </div>
+    return <div>
+      <em><b>{name}</b> HTTP authentication: unsupported scheme {`'${scheme}'`}</em>
+    </div>
   }
 }

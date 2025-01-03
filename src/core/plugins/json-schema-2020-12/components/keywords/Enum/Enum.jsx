@@ -14,7 +14,7 @@ const Enum = ({ schema }) => {
   return (
     <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--enum">
       <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
-        Allowed values
+        Valores permitidos
       </span>
       <ul>
         {schema.enum.map((element) => {

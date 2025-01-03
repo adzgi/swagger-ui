@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
 
-const Headers = ( { headers } )=>{
+const Headers = ({ headers }) => {
   return (
     <div>
       <h5>Response headers</h5>
@@ -13,7 +13,7 @@ Headers.propTypes = {
   headers: PropTypes.array.isRequired
 }
 
-const Duration = ( { duration } ) => {
+const Duration = ({ duration }) => {
   return (
     <div>
       <h5>Request duration</h5>
@@ -73,55 +73,55 @@ export default class LiveResponse extends React.Component {
 
     return (
       <div>
-        { curlRequest && requestSnippetsEnabled 
-          ? <RequestSnippets request={ curlRequest }/>
-          : <Curl request={ curlRequest } />
+        {curlRequest && requestSnippetsEnabled
+          ? <RequestSnippets request={curlRequest} />
+          : <Curl request={curlRequest} />
         }
-        { url && <div>
-            <div className="request-url">
-              <h4>Request URL</h4>
-              <pre className="microlight">{url}</pre>
-            </div>
+        {url && <div>
+          <div className="request-url">
+            <h4>Request URL</h4>
+            <pre className="microlight">{url}</pre>
           </div>
+        </div>
         }
         <h4>Server response</h4>
         <table className="responses-table live-responses-table">
           <thead>
-          <tr className="responses-header">
-            <td className="col_header response-col_status">Code</td>
-            <td className="col_header response-col_description">Details</td>
-          </tr>
+            <tr className="responses-header">
+              <td className="col_header response-col_status">Código</td>
+              <td className="col_header response-col_description">Detalles</td>
+            </tr>
           </thead>
           <tbody>
             <tr className="response">
               <td className="response-col_status">
-                { status }
+                {status}
                 {
                   notDocumented ? <div className="response-undocumented">
-                                    <i> Undocumented </i>
-                                  </div>
-                                : null
+                    <i> Undocumented </i>
+                  </div>
+                    : null
                 }
               </td>
               <td className="response-col_description">
                 {
-                  isError ? <Markdown source={`${response.get("name") !== "" ? `${response.get("name")}: ` : ""}${response.get("message")}`}/>
-                          : null
+                  isError ? <Markdown source={`${response.get("name") !== "" ? `${response.get("name")}: ` : ""}${response.get("message")}`} />
+                    : null
                 }
                 {
-                  body ? <ResponseBody content={ body }
-                                       contentType={ contentType }
-                                       url={ url }
-                                       headers={ headers }
-                                       getConfigs={ getConfigs }
-                                       getComponent={ getComponent }/>
-                       : null
+                  body ? <ResponseBody content={body}
+                    contentType={contentType}
+                    url={url}
+                    headers={headers}
+                    getConfigs={getConfigs}
+                    getComponent={getComponent} />
+                    : null
                 }
                 {
-                  hasHeaders ? <Headers headers={ returnObject }/> : null
+                  hasHeaders ? <Headers headers={returnObject} /> : null
                 }
                 {
-                  displayRequestDuration && duration ? <Duration duration={ duration } /> : null
+                  displayRequestDuration && duration ? <Duration duration={duration} /> : null
                 }
               </td>
             </tr>

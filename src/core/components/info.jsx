@@ -58,6 +58,21 @@ class Info extends React.Component {
     selectedServer: PropTypes.string,
   }
 
+  /**
+   * Renders the Info component which displays API information such as title, version, description, terms of service, contact, license, and external documentation.
+   *
+   * @component
+   * @param {Object} props - The properties passed to the component.
+   * @param {Object} props.info - The API information object.
+   * @param {string} props.url - The URL of the API.
+   * @param {string} props.host - The host of the API.
+   * @param {string} props.basePath - The base path of the API.
+   * @param {Function} props.getComponent - Function to get a component by name.
+   * @param {Object} props.externalDocs - The external documentation object.
+   * @param {string} props.selectedServer - The selected server URL.
+   * @param {string} props.specUrl - The specification URL.
+   * @returns {JSX.Element} The rendered Info component.
+   */
   render() {
     const {
       info,
@@ -105,10 +120,10 @@ class Info extends React.Component {
               <OpenAPIVersion oasVersion="2.0" />
             </span>
           </h2>
-          {host || basePath ? (
+          {/*{host || basePath ? (
             <InfoBasePath host={host} basePath={basePath} />
           ) : null}
-          {url && <InfoUrl getComponent={getComponent} url={url} />}
+          {url && <InfoUrl getComponent={getComponent} url={url} />}*/}
         </hgroup>
 
         <div className="description">

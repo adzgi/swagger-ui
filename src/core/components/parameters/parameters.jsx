@@ -75,7 +75,7 @@ export default class Parameters extends Component {
       })
     }
   }
-  
+
   onChangeMediaType = ({ value, pathMethod }) => {
     let { specActions, oas3Selectors, oas3Actions } = this.props
     const userHasEditedBody = oas3Selectors.hasUserEditedBody(...pathMethod)
@@ -83,7 +83,7 @@ export default class Parameters extends Component {
     oas3Actions.setRequestContentType({ value, pathMethod })
     oas3Actions.initRequestBodyValidateError({ pathMethod })
     if (!userHasEditedBody) {
-      if(!shouldRetainRequestBodyValue) {
+      if (!shouldRetainRequestBodyValue) {
         oas3Actions.setRequestBodyValue({ value: undefined, pathMethod })
       }
       specActions.clearResponse(...pathMethod)
@@ -142,13 +142,13 @@ export default class Parameters extends Component {
           {isOAS3 ? (
             <div className="tab-header">
               <div onClick={() => this.toggleTab("parameters")}
-                   className={`tab-item ${this.state.parametersVisible && "active"}`}>
-                <h4 className="opblock-title"><span>Parameters</span></h4>
+                className={`tab-item ${this.state.parametersVisible && "active"}`}>
+                <h4 className="opblock-title"><span>Parametros</span></h4>
               </div>
               {operation.get("callbacks") ?
                 (
                   <div onClick={() => this.toggleTab("callbacks")}
-                       className={`tab-item ${this.state.callbackVisible && "active"}`}>
+                    className={`tab-item ${this.state.callbackVisible && "active"}`}>
                     <h4 className="opblock-title"><span>Callbacks</span></h4>
                   </div>
                 ) : null
@@ -156,7 +156,7 @@ export default class Parameters extends Component {
             </div>
           ) : (
             <div className="tab-header">
-              <h4 className="opblock-title">Parameters</h4>
+              <h4 className="opblock-title">Parametros</h4>
             </div>
           )}
           {allowTryItOut ? (
@@ -166,40 +166,40 @@ export default class Parameters extends Component {
               enabled={tryItOutEnabled}
               onCancelClick={this.props.onCancelClick}
               onTryoutClick={onTryoutClick}
-              onResetClick={() => onResetClick(pathMethod)}/>
+              onResetClick={() => onResetClick(pathMethod)} />
           ) : null}
         </div>
         {this.state.parametersVisible ? <div className="parameters-container">
-          {!groupedParametersArr.length ? <div className="opblock-description-wrapper"><p>No parameters</p></div> :
+          {!groupedParametersArr.length ? <div className="opblock-description-wrapper"><p>Sin parametros</p></div> :
             <div className="table-container">
               <table className="parameters">
                 <thead>
-                <tr>
-                  <th className="col_header parameters-col_name">Name</th>
-                  <th className="col_header parameters-col_description">Description</th>
-                </tr>
+                  <tr>
+                    <th className="col_header parameters-col_name">Nombre</th>
+                    <th className="col_header parameters-col_description">Descripción</th>
+                  </tr>
                 </thead>
                 <tbody>
-                {
-                  groupedParametersArr.map((parameter, i) => (
-                    <ParameterRow
-                      fn={fn}
-                      specPath={specPath.push(i.toString())}
-                      getComponent={getComponent}
-                      getConfigs={getConfigs}
-                      rawParam={parameter}
-                      param={specSelectors.parameterWithMetaByIdentity(pathMethod, parameter)}
-                      key={`${parameter.get("in")}.${parameter.get("name")}`}
-                      onChange={this.onChange}
-                      onChangeConsumes={this.onChangeConsumesWrapper}
-                      specSelectors={specSelectors}
-                      specActions={specActions}
-                      oas3Actions={oas3Actions}
-                      oas3Selectors={oas3Selectors}
-                      pathMethod={pathMethod}
-                      isExecute={isExecute} />
-                  ))
-                }
+                  {
+                    groupedParametersArr.map((parameter, i) => (
+                      <ParameterRow
+                        fn={fn}
+                        specPath={specPath.push(i.toString())}
+                        getComponent={getComponent}
+                        getConfigs={getConfigs}
+                        rawParam={parameter}
+                        param={specSelectors.parameterWithMetaByIdentity(pathMethod, parameter)}
+                        key={`${parameter.get("in")}.${parameter.get("name")}`}
+                        onChange={this.onChange}
+                        onChangeConsumes={this.onChangeConsumesWrapper}
+                        specSelectors={specSelectors}
+                        specActions={specActions}
+                        oas3Actions={oas3Actions}
+                        oas3Selectors={oas3Selectors}
+                        pathMethod={pathMethod}
+                        isExecute={isExecute} />
+                    ))
+                  }
                 </tbody>
               </table>
             </div>
@@ -226,7 +226,7 @@ export default class Parameters extends Component {
                     this.onChangeMediaType({ value, pathMethod })
                   }}
                   className="body-param-content-type"
-                  ariaLabel="Request content type" 
+                  ariaLabel="Request content type"
                   controlId={controlId}
                 />
               </label>

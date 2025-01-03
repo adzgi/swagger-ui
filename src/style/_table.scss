@@ -1,24 +1,18 @@
-table
-{
+table {
     width: 100%;
     padding: 0 10px;
 
     border-collapse: collapse;
 
-    &.model
-    {
-        tbody
-        {
-            tr
-            {
-                td
-                {
+    &.model {
+        tbody {
+            tr {
+                td {
                     padding: 0;
 
                     vertical-align: top;
 
-                    &:first-of-type
-                    {
+                    &:first-of-type {
                         width: 174px;
                         padding: 0 0 0 2em;
                     }
@@ -27,10 +21,8 @@ table
         }
     }
 
-    &.headers
-    {
-        td
-        {
+    &.headers {
+        td {
             font-size: 12px;
             font-weight: 300;
 
@@ -39,25 +31,20 @@ table
             @include text_code();
         }
 
-        .header-example
-        {
+        .header-example {
             color: #999;
             font-style: italic;
         }
     }
 
-    tbody
-    {
-        tr
-        {
-            td
-            {
+    tbody {
+        tr {
+            td {
                 padding: 10px 0 0 0;
 
                 vertical-align: top;
 
-                &:first-of-type
-                {
+                &:first-of-type {
                     min-width: 6em;
                     padding: 10px 0;
                 }
@@ -65,13 +52,11 @@ table
         }
     }
 
-    thead
-    {
-        tr
-        {
+    thead {
+        tr {
+
             th,
-            td
-            {
+            td {
                 font-size: 12px;
                 font-weight: bold;
 
@@ -87,12 +72,11 @@ table
     }
 }
 
-.parameters-col_description
-{
+.parameters-col_description {
     width: 99%; // forces other columns to shrink to their content widths
     margin-bottom: 2em;
-    input
-    {
+
+    input {
         width: 100%;
         max-width: 340px;
     }
@@ -101,15 +85,15 @@ table
         border-width: 1px;
     }
 
-    .markdown, .renderedMarkdown {
+    .markdown,
+    .renderedMarkdown {
         p {
             margin: 0;
         }
     }
 }
 
-.parameter__name
-{
+.parameter__name {
     font-size: 16px;
     font-weight: normal;
 
@@ -119,17 +103,14 @@ table
 
     @include text_headline();
 
-    &.required
-    {
+    &.required {
         font-weight: bold;
 
-        span
-        {
+        span {
             color: red;
         }
 
-        &:after
-        {
+        &:after {
             font-size: 10px;
 
             position: relative;
@@ -137,7 +118,7 @@ table
 
             padding: 5px;
 
-            content: 'required';
+            content: 'Obligatorio';
 
             color: rgba($table-parameter-name-required-font-color, .6);
         }
@@ -145,16 +126,14 @@ table
 }
 
 .parameter__in,
-.parameter__extension
-{
+.parameter__extension {
     font-size: 12px;
     font-style: italic;
 
     @include text_code($table-parameter-in-font-color);
 }
 
-.parameter__deprecated
-{
+.parameter__deprecated {
     font-size: 12px;
     font-style: italic;
 
@@ -178,8 +157,7 @@ table
 }
 
 
-.table-container
-{
+.table-container {
     padding: 20px;
 }
 
@@ -187,7 +165,8 @@ table
 .response-col_description {
     width: 99%; // forces other columns to shrink to their content widths
 
-    .markdown, .renderedMarkdown {
+    .markdown,
+    .renderedMarkdown {
         p {
             margin: 0;
         }
@@ -198,8 +177,7 @@ table
     min-width: 6em;
 }
 
-.response__extension
-{
+.response__extension {
     font-size: 12px;
     font-style: italic;
 

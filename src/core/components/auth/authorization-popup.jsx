@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 export default class AuthorizationPopup extends React.Component {
-  close =() => {
+  close = () => {
     let { authActions } = this.props
 
     authActions.showDefinitions(false)
@@ -21,23 +21,23 @@ export default class AuthorizationPopup extends React.Component {
           <div className="modal-dialog-ux">
             <div className="modal-ux-inner">
               <div className="modal-ux-header">
-                <h3>Available authorizations</h3>
-                <button type="button" className="close-modal" onClick={ this.close }>
+                <h3>Autorizaciones disponibles</h3>
+                <button type="button" className="close-modal" onClick={this.close}>
                   <CloseIcon />
                 </button>
               </div>
               <div className="modal-ux-content">
 
                 {
-                  definitions.valueSeq().map(( definition, key ) => {
-                    return <Auths key={ key }
-                                  AST={AST}
-                                  definitions={ definition }
-                                  getComponent={ getComponent }
-                                  errSelectors={ errSelectors }
-                                  authSelectors={ authSelectors }
-                                  authActions={ authActions }
-                                  specSelectors={ specSelectors }/>
+                  definitions.valueSeq().map((definition, key) => {
+                    return <Auths key={key}
+                      AST={AST}
+                      definitions={definition}
+                      getComponent={getComponent}
+                      errSelectors={errSelectors}
+                      authSelectors={authSelectors}
+                      authActions={authActions}
+                      specSelectors={specSelectors} />
                   })
                 }
               </div>

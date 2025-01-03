@@ -123,14 +123,14 @@ export const getType = (schema, processedSchemas = new WeakSet()) => {
     : type === "array"
       ? getArrayType()
       : [
-            "null",
-            "boolean",
-            "object",
-            "array",
-            "number",
-            "integer",
-            "string",
-          ].includes(type)
+        "null",
+        "boolean",
+        "object",
+        "array",
+        "number",
+        "integer",
+        "string",
+      ].includes(type)
         ? type
         : inferType()
 
@@ -312,7 +312,7 @@ export const stringifyConstraints = (schema) => {
 
   // validation Keywords for Strings
   const stringRange = stringifyConstraintRange(
-    "characters",
+    "caracteres",
     schema?.minLength,
     schema?.maxLength
   )

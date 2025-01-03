@@ -90,7 +90,7 @@ export const contact = () => (system) => {
 }
 
 export const selectContactNameField = () => (system) => {
-  return system.specSelectors.contact().get("name", "the developer")
+  return system.specSelectors.contact().get("name", "con el desarrollador")
 }
 
 export const selectContactEmailField = () => (system) => {

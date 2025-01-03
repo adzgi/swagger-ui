@@ -2,7 +2,7 @@
 # We don't declare them here — take a look at our docs.
 # https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md
 
-FROM nginx:1.27.3-alpine
+FROM --platform=linux/x86_64 nginx:1.27.3-alpine
 
 RUN apk add --update-cache --no-cache "nodejs"
 
@@ -26,5 +26,8 @@ COPY --chmod=0666 ./docker/configurator /usr/share/nginx/configurator
 # Simulates running NGINX as a non root; in future we want to use nginxinc/nginx-unprivileged.
 # In future we will have separate unpriviledged images tagged as v5.1.2-unprivileged.
 RUN chmod 777 /usr/share/nginx/html/ /etc/nginx/conf.d/ /etc/nginx/conf.d/default.conf /var/cache/nginx/ /var/run/
+
+COPY ./dist/index.html /usr/share/nginx/html/index.html.template
+
 
 EXPOSE 8080
