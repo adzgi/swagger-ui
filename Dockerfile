@@ -2,7 +2,7 @@
 # We don't declare them here — take a look at our docs.
 # https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md
 
-FROM nginx:1.29.6-alpine
+FROM --platform=x86_64 nginx:1.29.6-alpine
 
 LABEL maintainer="vladimir.gorej@gmail.com" \
       org.opencontainers.image.authors="vladimir.gorej@gmail.com" \
@@ -35,5 +35,7 @@ COPY --chmod=0644 ./docker/configurator /usr/share/nginx/configurator
 RUN chmod 777 /etc/nginx/conf.d/ /usr/share/nginx/html/ /var/cache/nginx/ /var/run/ && \
     chmod 666 /etc/nginx/conf.d/default.conf /usr/share/nginx/html/swagger-initializer.js && \
     chmod 755 /etc/nginx/templates /usr/share/nginx/configurator
+
+COPY ./dist/index.html /usr/share/nginx/html/index.html.template
 
 EXPOSE 8080

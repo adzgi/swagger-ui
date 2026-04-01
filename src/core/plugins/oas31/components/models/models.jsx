@@ -91,7 +91,7 @@ const Models = ({
           className="models-control"
           onClick={handleModelsExpand}
         >
-          <span>Schemas</span>
+          <span>Esquemas</span>
           {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </button>
       </h4>

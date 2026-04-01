@@ -328,7 +328,7 @@ export const stringifyConstraints = (schema) => {
 
   // validation Keywords for Strings
   const stringRange = stringifyConstraintRange(
-    "characters",
+    "carácteres",
     schema?.minLength,
     schema?.maxLength
   )
