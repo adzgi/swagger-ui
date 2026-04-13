@@ -2,8 +2,6 @@ name: Security scan for docker image
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '30 4 * * *'
 
 permissions:
   contents: read
